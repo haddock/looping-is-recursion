@@ -30,7 +30,10 @@
      :else (recur (inc i) (rest s)))))
 
 (defn avg [a-seq]
-  -1)
+  (loop [acc 0 counter 0 s a-seq]
+    (cond
+     (empty? s) (/ acc counter)
+     :else (recur (+ acc (first s)) (inc counter) (rest s)))))
 
 (defn parity [a-seq]
   ":(")
