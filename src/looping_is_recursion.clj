@@ -55,5 +55,7 @@
 
 
 (defn cut-at-repetition [a-seq]
-  [":("])
-
+  (loop [remaining a-seq acc-seq [] seen #{}]
+    (if (or (empty? remaining) (contains? seen (first remaining)))
+      acc-seq
+      (recur (rest remaining) (conj acc-seq (first remaining)) (conj seen (first remaining))))))
