@@ -46,7 +46,13 @@
      (recur (toggle res (first s)) (rest s)))))
 
 (defn fast-fibo [n]
-  ":(")
+  (if (<= n 1)
+    n
+    (loop [x 1 y 0 count 2]
+      (if (= count n)
+        (+ x y)
+        (recur (+ x y) x (inc count))))))
+
 
 (defn cut-at-repetition [a-seq]
   [":("])
